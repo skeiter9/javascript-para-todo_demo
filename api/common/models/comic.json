@@ -1,0 +1,28 @@
+{
+  "name": "comic",
+  "plural": "comics",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "photo": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "agregadoAsignaciones": {
+      "type": "hasMany",
+      "model": "agregadoAsignacion",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

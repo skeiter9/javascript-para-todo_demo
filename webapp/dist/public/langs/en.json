@@ -1,0 +1,17 @@
+{
+  "CANCEL": "cancel",
+  "DASHBOARD": "dashboard",
+  "SETTINGS_CARD": "settings for {{ module }}",
+  "LOGIN_SECTION": {
+    "USERNAME": "username",
+    "PASSWORD": "password",
+    "RECOVERY_PASSWORD": "recovery password",
+    "LOGIN_BUTTON": "login",
+    "LOGIN_FAILED": "username or password failed"
+  },
+  "NOT_ITEMS": "there are no items registered",
+  "LANGUAGES": {
+    "ES": "SPANISH",
+    "EN": "ENGLISH"
+  }
+}

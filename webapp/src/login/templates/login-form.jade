@@ -1,0 +1,10 @@
+form(novalidate='', name = 'loginForm')
+  md-input-container
+    label {{'LOGIN_SECTION.USERNAME' | translate | capitalize}}
+    input(ng-model = "login.data.username",name = 'username', required='')
+  md-input-container
+    label {{'LOGIN_SECTION.PASSWORD'  | translate | capitalize}}
+    input(ng-model = "login.data.password",name = 'password', required='', type = "password")
+  section(layout = "row", layout-align = "end center")
+    md-button(ng-click = 'login.submit(loginForm)', class = "md-accent",  aria-label="login")
+      | {{'LOGIN_SECTION.LOGIN_BUTTON'  | translate | capitalize}}

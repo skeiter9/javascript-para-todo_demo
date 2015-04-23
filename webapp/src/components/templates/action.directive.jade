@@ -1,0 +1,19 @@
+md-button(
+	ng-click = 'action.touch()'
+	aria-label = 'new Item'
+	class = 'md-fab md-accent mdx-fab-action p-0 m-0 p-a b-0 l-0'
+)
+	md-icon(md-font-icon = 'mdi mdi-plus', ng-class = '{"cross": action.toggle}')
+
+section(class = 'action__wrapper')
+	md-button(
+		ng-repeat = 'item in action.mdOptions'
+		ng-click = 'item.click()'
+		md-theme = '{{item.theme}}'
+		aria-label = 'new Item'
+		ng-class = '{"show": action.toggle}'
+		class = 'md-fab md-primary square--s p-a'
+	)
+		md-icon(md-font-icon = 'mdi mdi-{{item.icon}}')
+		md-tooltip(md-direction = 'left', md-autohide='' ng-if = '!action.isTouch')
+			| {{ item.name | uppercase | translate | capitalize }}

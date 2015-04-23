@@ -1,0 +1,17 @@
+md-dialog(aria-label = 'mdDialog')
+
+  md-subheader(class = '') 
+    | {{ 'SETTINGS_CARD' | translate:{module: settings.moduleName} | capitalize }}
+
+  md-content(class = 'p-0')
+    md-list
+
+      md-list-item
+        p {{ 'SETTINGS_CARD_CONTENT.IN_TABLE' | translate}}
+        md-checkbox(
+          ng-model = 'settings.inTable'
+          ng-change = 'settings.changeTypeContent(settings.inTable)', class = 'mr-0')
+
+  div.md-actions
+    md-button(ng-click = 'settings.closeDialog()', aria-label = 'close settings')
+      | {{'CLOSE' | translate | capitalize }}

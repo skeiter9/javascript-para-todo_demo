@@ -1,0 +1,19 @@
+{
+  "verbose": true,
+  "ignore": [
+    ".sass-cache",
+    ".git/",
+    "src/*",
+    "node_modules/*",
+    "bower_components/*",
+    "lib_modules/*",
+    "dist/ngLocale/*"
+  ],
+  "watch": [
+    "server/**.*",
+    "common/**.*"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

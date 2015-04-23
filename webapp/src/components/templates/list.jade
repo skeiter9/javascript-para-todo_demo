@@ -1,0 +1,44 @@
+div(ng-if = 'list.items.table.length == 0'): md-subheader(class = 'md-warn bg-t') {{ 'NOT_ITEMS' | translate }}
+
+table(ng-show = 'list.items.table.length > 0 && list.layoutData.ui[list.module.pluralName].listType == "table"', class = 'md-table fx-speed-750')
+
+  thead
+    tr
+      td(class = 'photo')
+      td(
+        ng-repeat = '(field, value) in list.items.table[0]'
+        ng-if = 'field !="id" && field !="photo"'
+        class = 'md-subheader md-{{list.module.pluralName}}-theme md-primary d-tc'
+      ) {{field | uppercase | translate | capitalize}}
+
+  tbody
+    tr(ng-repeat = 'item in list.items.table', ng-click = 'action("show", item)' )
+      td(class = 'photo'): img(ng-src="{{list.getPhoto(item.photo)}}" class="md-avatar br-circle" alt="{{item.name}}")
+      td(
+        ng-repeat = '(field, value) in item'
+        ng-if = 'field !="id" && field !="photo"'
+      ) {{value | capitalize}}
+
+md-list(ng-show = 'list.items.table.length > 0 && list.layoutData.ui[list.module.pluralName].listType == "list"', class =  'fx-speed-750')
+
+  md-list-item(
+    ng-repeat = 'item in list.items.list'
+    ng-click = 'list.action("show", item)'
+    ng-class = 'list.linesClass'
+    class = 'fx-fade-down fx-speed-750 pl0 pr0'
+  )
+    img(ng-src="{{list.getPhoto(item.photo)}}" class="md-avatar" alt="{{item.title}}")
+
+    div(class= 'md-list-item-text')
+      h3 {{ item.title | uppercase | translate | capitalize }}
+      h4(ng-if = 'list.linesClass == "md-3-line"') {{ item.subtitle || '' | capitalize }}
+      p {{ item.description || '' | capitalize }}
+
+    md-icon(
+      ng-if = 'list.module.update'
+      ng-click = 'list.action("edit", item)'
+      md-font-icon = 'mdi mdi-pencil'
+      aria-label = 'edit {{item.title}}'
+      class = 'md-secondary p-8 m-0'
+      ng-class = "{'t-16': (list.linesClass == 'md-2-line'), 't-24': (list.linesClass == 'md-3-line') }"
+    )

@@ -1,0 +1,11 @@
+{
+  "name": "usuario",
+  "plural": "usuarios",
+  "base": "User",
+  "idInjection": true,
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

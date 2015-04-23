@@ -1,0 +1,38 @@
+.md-appbar
+	z-index 3
+
+.md-table
+	border-spacing 0
+	min-width 100%
+	padding 0
+	width 100%
+	td
+		max-width 160px
+		min-width 80px
+		overflow ellipsis
+		padding 16px 8px
+		width 120px
+		&.photo
+			box-sizing border-box
+			max-width 72px
+			min-width 56px
+			padding-left 16px
+			width 1%
+	thead td
+		border-bottom 2px solid rgba(0, 0, 0, .12)
+		&.photo
+			border-bottom 0
+	tr:focus
+		outline 0
+
+.md-fab-toggle
+	transition transform .25s ease !important
+	&.in
+		transform scale(1)
+	&.out
+		transform scale(0)
+
+.md-toolbar-title
+	flex-basis 140px
+	flex-grow 100
+	flex-shrink 100

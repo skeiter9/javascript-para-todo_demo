@@ -1,0 +1,26 @@
+{
+  "CANCEL": "cancelar",
+  "DASHBOARD": "panel de control",
+  "DESCRIPTION": "descripción",
+  "NEW_COMIC": "REGISTRAR COMIC",
+  "LOGIN_SECTION": {
+    "USERNAME": "usuario",
+    "PASSWORD": "contraseña",
+    "RECOVERY_PASSWORD": "recuperar contraseña",
+    "LOGIN_BUTTON": "ingresar",
+    "LOGIN_FAILED": "el usuario o contraseña son errados"
+  },
+  "LANGUAGES": {
+    "ES": "Español",
+    "EN": "Ingles"
+  },
+  "ACCEPTED_IMAGES": "Solo se aceptan imagenes en formato: jpg, png, jpeg, bmp y gif",
+  "CLOSE": "cerrar",
+  "NAME": "nombre",
+  "NOT_ITEMS": "No hay items registrados",
+  "SETTINGS_CARD": "configuración para {{ module }}",
+  "SETTINGS_CARD_CONTENT": {
+    "IN_TABLE": "ver data en tabla",
+    "IN_LIST": "ver data en Lista"
+  }
+}

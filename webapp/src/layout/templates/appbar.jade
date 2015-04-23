@@ -1,0 +1,30 @@
+div.md-toolbar-tools
+  md-button(
+  	aria-label = 'settings'
+  	ng-click = 'layout.sidenavOpen("left")'
+    class = 'md-fab md-primary md-toolbar-icon square--s bg-t bs-n'
+  )
+    md-icon(md-font-icon='mdi mdi-menu')
+
+  span(class = 'o-e md-toolbar-title') {{layout.data.appbar.title | uppercase | translate | uppercase}}
+  
+  span(flex = true)
+
+  mdx-menu
+    md-button(
+      aria-label = 'languages'
+      class ='md-fab md-primary square--s bg-t bs-n'
+    )
+      md-icon(md-font-icon = 'mdi mdi-flag')
+    mdx-menu-options
+      mdx-menu-option(
+        ng-repeat = 'lang in layout.data.languages.avaibles'
+        ng-click = 'layout.changeLanguage(lang)'
+        ng-class = '{"md-primary": (layout.currentLanguage == lang)}'
+      ) {{'LANGUAGES.' + lang | uppercase | translate | capitalize}}
+//
+  md-button(
+    aria-label='settings'
+    ng-click = 'layout.sidenavOpen("right")'
+    class='md-fab md-toolbar-icon square--s bg-t bs-n'
+  ): md-icon(md-font-icon='mdi mdi-dots-vertical')

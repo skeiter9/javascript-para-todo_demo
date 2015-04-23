@@ -1,0 +1,13 @@
+p {
+  padding: 0 20px;
+  text-align: center;
+}
+
+p.md-caption {
+  color: #777;
+}
+
+
+.demo-content  {
+    min-height: 348px;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "injustice-app",
+  "version": "0.1.0",
+  "dependencies": {
+    "mdi": "~1.0.8-beta",
+    "angular-ui-router": "~0.2.13",
+    "ngFx": "~1.1.0",
+    "material": "angular/material#master",
+    "angular-translate": "~2.6.1",
+    "angular-translate-loader-static-files": "~2.6.1",
+    "angular-file-upload": "~1.1.5"
+  },
+  "devDependencies": {
+    "nib": "~1.1.0"
+  }
+}

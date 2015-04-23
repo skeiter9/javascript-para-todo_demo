@@ -1,0 +1,36 @@
+md-toolbar(
+	md-scroll-shrink=''
+	ui-view = 'appbar'
+  class = 'br-1100'
+)
+
+  div.md-toolbar-tools(class = 'pr-8')
+
+    md-button(md-no-ink='', class = 'md-fab square--s md-primary bg-t bs-n ml-0 mr-16', aria-label = '{{cardToggle.moduleNamePlural | uppercase | translate | capitalize}}'): md-icon(md-font-icon = 'mdi mdi-{{cardToggle.settings.icon}}')
+
+    span(class = 'o-e') {{cardToggle.moduleNamePlural | uppercase | translate | capitalize}}
+
+    span(flex = true)
+
+    md-button(
+			ng-click = '::cardToggle.settingsDialog($event)'
+      class = 'md-fab md-primary square--s bg-t bs-n'
+      aria-label='close card'
+    )
+      md-icon(md-font-icon = 'mdi mdi-settings')
+
+    md-button(
+			ng-click = '::cardToggle.toggle()'
+      class = 'md-fab md-primary square--s bg-t bs-n'
+      aria-label='close card'
+    )
+      md-icon(
+				md-font-icon = 'mdi mdi-chevron-{{((cardToggle.settings.showContent) ? "up" : "down")}} fx-speed-750'
+				class = 'fs-l  md-fab-toggle'
+			)
+
+md-card-content(
+	class = 'pt-0 pl-0 pr-0 pb-0 mh-300 fx-speed-750 bg-w br-0011 bs-default'
+	ng-transclude=''
+	ng-show = 'cardToggle.settings.showContent'
+)

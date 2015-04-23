@@ -1,0 +1,54 @@
+
+mdx-menu
+  box-sizing border-box
+  position relative
+
+mdx-menu-options
+  background #fff
+  border-radius 2px
+  right 0
+  color: rgba(#000, .85)
+  display flex
+  flex-direction column
+  min-width 112px
+  padding 8px 0
+  position absolute
+  top 0
+  z-index 30
+  &.md-active
+    opacity: 1
+    transform-origin 100% 0
+    transform scale(1)
+  &.md-active-add
+  &.md-active-remove
+    transition: 0s all;
+  &.md-active-add.md-active-add-active
+    transition: all .3s cubic-bezier(.55, 0, .55, .2)
+  &.md-active-remove.md-active-remove-active
+    transition: all .4s cubic-bezier(.25, .8, .25, 1)
+
+  &.md-leave
+    opacity: 0
+    transform scale(0)
+    transform-origin 100% 0
+  &.md-leave-add
+  &.md-leave-remove
+    transition: 0s all;
+  &.md-leave-add.md-leave-add-active
+    transition: all .3s cubic-bezier(.55, 0, .55, .2)
+  &.md-leave-remove.md-leave-remove-active
+    transition: all .4s cubic-bezier(.25, .8, .25, 1)
+
+mdx-menu-option
+  cursor pointer
+  font-size 1.6rem
+  height 48px
+  line-height 3
+  padding-left 16px
+  position relative
+  &.md-primary
+    background-color #eee
+/*
+right: 26px;
+  top: 21px;
+*/

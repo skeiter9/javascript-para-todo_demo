@@ -1,0 +1,68 @@
+//var cover = require('./../assets/cover-agregados.jpg');
+
+form(name = "form", novalidate = '')
+
+  input-picture(photo = "afVm.form.photo", storage = 'agregados', cover='afVm.cover')
+
+  md-input-container(class = 'mr-16 ml-16 mt-8')
+    label  Nombre 
+    input(type="text", required="", name="name", ng-model="afVm.form.name", ng-model-options="{ updateOn: 'default', debounce: {'blur': 200} }")
+    div(ng-messages="form.name.$error", ng-show="(form.name.$dirty && form.name.$invalid)")
+      div(ng-message="required") Este campo es obligatorio
+
+  md-input-container(class = 'mr-16 ml-16')
+    label Descripción
+    textarea(name="description", ng-model="afVm.form.description", columns="1", md-maxlength="140", ng-model-options="{ updateOn: 'default', debounce: {'blur': 200} }")
+    div(ng-messages="form.description.$error", ng-show="(form.description.$dirty && form.description.$invalid)")
+      div(ng-message="md-maxlength") Máximo 140 carácteres
+
+  // Almacen assignation
+  md-checkbox(name = 'toggleAssign', ng-model = 'afVm.showAsignation', ng-disabled = 'afVm.ui.nonAlmacenes', ng-change = 'afVm.toggleAsignations()', class = 'mb-0 mt-0 pl-8') Asignar Almacenes
+    md-tooltip(md-direction='bottom', md-autohide = 'true', ng-if = 'afVm.ui.nonAlmacenes') No hay Almacenes registrados
+
+  //Toggle Almacen
+  //md-subheader(ng-show = 'afVm.ui.nonEmpresas', class = 'ml32 pb0 md-warn') No se han registrado empresas.
+  //md-subheader(ng-show = 'afVm.ui.nonAlmacenes', class = 'ml32 pb0 md-warn') No se han registrado almacenes.
+  //md-subheader(ng-show = 'afVm.ui.nonUms', class = 'ml32 pb0 md-warn') No se han registrado Unidades de medidas aún.
+  
+  //Almacen
+  ng-form(ng-if = 'afVm.showAsignation && !afVm.ui.nonEmpresas && !afVm.ui.nonAlmacenes && !afVm.ui.nonUms', name = 'almacenForm', novalidate='')
+    section(ng-repeat-start = 'almacen in afVm.form.almacenes', layout='row', layout-wrap = 'wrap', class = 'pl-4 pr-16')
+
+      md-button(ng-click = 'afVm.ui.removeAlmacen(afVm.form.almacenes, almacen)', style = {top: '10px', 'z-index': 20}, class = 'mr-4 br-circle circle as-center', aria-label = 'remove almacen'): md-icon(md-font-icon="mdi mdi-close")
+
+      md-select(ng-class = '{"fix-disabled-md-select": almacen.disabled}', ng-model="almacen.almacenId", name = 'almacen{{$index}}', md-on-open = 'afVm.empresasLoad()', required, placeholder="Almacen", flex="", ng-change = 'afVm.ui.chooseAlmacen(almacen)')
+        md-optgroup(ng-repeat="empresaR in afVm.empresas | filter: afVm.ui.checkEmpresa", label = '{{empresaR.name}}')
+          md-option(ng-repeat="almacenR in empresaR.almacenes", ng-value="almacenR.id") {{ almacenR.alias }}
+      
+      //price
+      ng-form(ng-if = '!afVm.ui.nonUms && almacen.almacenId', name = 'precioForm', novalidate=''): div(ng-repeat = 'precio in almacen.precios', layout='', layout-wrap = 'wrap', class = 'pl-32', flex = '100')
+        md-button(ng-click = 'afVm.ui.removePrice(almacen.precios, precio, $parent.$parent.$index)', class = 'mr-4 br-circle circle--small as-center', aria-label = 'remove price'): md-icon(md-font-icon="mdi mdi-close")
+
+        md-select(ng-class = '{"fix-disabled-md-select": precio.disabled}', name = "um{{$parent.$parent.$index}}{{$index}}", ng-model="precio.unidadMedidaId", md-on-open = 'afVm.umsLoad($parent.$parent.$index)', required="", placeholder="UM", flex='')
+          md-option(ng-repeat = 'um in afVm["ums" + $parent.$parent.$index] | filter: afVm.ui.filterUm', ng-value="um.id") {{ um.suffix }}
+
+        md-input-container(md-no-float='', flex="", class = 'ml16', style = {'margin-top': '20px'})
+          input(ng-disabled = 'precio.disabled', name="price{{$parent.$parent.$index}}{{$index}}", ng-model="precio.precio_unitario", type="number", required="", placeholder = 'Precio', ng-model-options="{ updateOn: 'default blur', debounce: {default: 200, blur: 200} }")
+          div(ng-messages="precioForm['price' + $index].$error", ng-show="(precioForm['price' + $index].$dirty && precioForm['price' + $index].$invalid)")
+            div(ng-message="required", ng-show = "precioForm['price' + $index].$error.required") Obligatorio
+            div(ng-message="number", ng-show = "precioForm['price' + $index].$error.number") Númerico
+
+        div(ng-if = '$last', layout='', layout-align = 'end center', flex = '100')
+          md-button(ng-click = 'afVm.ui.savePrice(precioForm, almacen.precios, precio, $parent.$parent.$index)', class = 'mr-0 br-circle circle', aria-label="Insertar otro precio")
+            md-icon(md-font-icon="mdi mdi-tag-outline")
+            md-tooltip(md-direction = 'left', md-autohide = 'true') Insertar otro precio 
+
+    //controls
+    section(ng-repeat-end='', layout='', layout-align = 'space-between center', ng-if = '$last', class = 'pr8')
+
+      md-button(ng-click = "afVm.ui.addAlmacen(almacenForm, almacen)", aria-label="Add Almacen", class = 'ml4 br-circle circle', style = {'align-self': 'flex-start'})
+        md-icon(md-font-icon="mdi mdi-factory")
+        md-tooltip(md-direction = 'right', md-autohide = 'true') Insertar Almacen
+
+      md-button(ng-click = "afVm.newUm({ev: $event})", aria-label="Registrar unidad de medida", class = 'ml4 br-circle circle')
+        md-icon(md-font-icon="mdi mdi-scale")
+        md-tooltip(md-direction = 'left', md-autohide = 'true') Insertar Unidad de medida
+
+  section(layout = "row", layout-align = "end center")
+    md-button(ng-click = 'afVm.save(form)', class = "md-accent mr-16 mt-8", aria-label="login", ng-bind = "afVm.update ? 'Actualizar': 'Registrar'")

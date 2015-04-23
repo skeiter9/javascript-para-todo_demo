@@ -1,0 +1,157 @@
+$chip-font-size: 1.3rem !default;
+$chip-height: 3.2rem !default;
+$chip-padding: 0 0.8rem 0 1.2rem !default;
+$chip-margin: 0.8rem 0.8rem 0 0 !default;
+$chip-wrap-padding: 0 0.8rem 0.8rem 0.8rem !default;
+$chip-delete-icon-size: 1.8rem !default;
+$contact-chip-padding: 0 0.8rem 0 0 !default;
+$contact-chip-suggestion-image-height: 4.0rem !default;
+$contact-chip-suggestion-margin: 0.8rem !default;
+$contact-chip-name-width: 12rem !default;
+
+.md-contact-chips {
+  .md-chips {
+    .md-chip {
+      padding: $contact-chip-padding;
+      .md-contact-avatar {
+        float: left;
+        img {
+          height: $chip-height;
+          border-radius: $chip-height / 2;
+        }
+      }
+      .md-contact-name {
+        display: inline-block;
+        height: $chip-height;
+        margin-left: 0.8rem;
+      }
+    }
+  }
+}
+.md-contact-suggestion {
+  height: ($contact-chip-suggestion-margin * 2) + $contact-chip-suggestion-image-height;
+  img {
+    height: $contact-chip-suggestion-image-height;
+    border-radius: $contact-chip-suggestion-image-height / 2;
+    margin-top: $contact-chip-suggestion-margin;
+  }
+  .md-contact-name {
+    margin-left: $contact-chip-suggestion-margin;
+    width: $contact-chip-name-width;
+  }
+  .md-contact-name, .md-contact-email {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.md-contact-chips-suggestions li {
+  height: 100%;
+}
+.md-chips {
+  @include pie-clearfix();
+  box-shadow: $whiteframe-shadow-z1;
+  display: block;
+  font-family: $font-family;
+  font-size: $chip-font-size;
+  padding: $chip-wrap-padding;
+  vertical-align: middle;
+  cursor: text;
+  .md-chip {
+    cursor: default;
+    border-radius: $chip-height / 2;
+    display: block;
+    height: $chip-height;
+    line-height: $chip-height;
+    margin: $chip-margin;
+    padding: $chip-padding;
+    float: left;
+    .md-chip-content {
+      display: block;
+      padding-right:0.4rem;
+      float: left;
+      &:focus {
+        outline: none;
+      }
+    }
+    .md-chip-remove-container {
+      display: inline-block;
+      margin-right: -0.5rem;
+    }
+    &.selected {
+      box-shadow: $whiteframe-shadow-z1;
+    }
+    .md-chip-remove {
+      text-align: center;
+      width: $chip-height;
+      line-height: $chip-height;
+      min-width: 0;
+      padding: 0;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      margin: 0;
+      md-icon {
+        height: $chip-delete-icon-size;
+        width: $chip-delete-icon-size;
+      }
+    }
+  }
+  .md-chip-input-container {
+    display: inline-block;
+    line-height: $chip-height;
+    margin: $chip-margin;
+    padding: $chip-padding;
+    input {
+      &:not([type]),&[type="email"],&[type="number"],&[type="tel"],&[type="url"],&[type="text"] {
+        border: 0;
+        height: $chip-height;
+        line-height: $chip-height;
+        padding: 0;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+    md-autocomplete, md-autocomplete-wrap {
+      background: transparent;
+      height: $chip-height;
+    }
+    md-autocomplete {
+      box-shadow: none;
+      input {
+        position: relative;
+      }
+    }
+    input {
+      border:0;
+      height: $chip-height;
+      line-height: $chip-height;
+      padding: 0;
+      &:focus {
+        outline:none;
+      }
+    }
+    md-autocomplete, md-autocomplete-wrap {
+      height: $chip-height;
+    }
+    md-autocomplete {
+      box-shadow: none;
+      input {
+        position: relative;
+      }
+    }
+    &:not(:first-child) {
+      margin: $chip-margin;
+    }
+    input {
+      background:transparent;
+      border-width: 0;
+    }
+  }
+  md-autocomplete {
+    button {
+      display: none;
+    }
+  }
+}

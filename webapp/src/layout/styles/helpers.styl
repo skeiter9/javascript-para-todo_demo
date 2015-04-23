@@ -1,0 +1,111 @@
+for values in 0 4px 8px 16px 32px
+	for property in (m margin) (p padding)
+		for direction in () (t top) (b bottom) (r right) (l left)
+			.{property[0]}{direction[0]}-{values}
+				{property[1]}-{direction[1]} values !important if direction[1]
+				{property[1]}{direction[1]} values !important unless direction[1]
+//used: pb
+
+.br-circle
+	border-radius 50% !important
+
+.as-center
+	align-self center
+
+.square--s
+	height 40px !important
+	width 40px !important
+
+.bg-t
+	background-color transparent !important
+
+.bg-w
+	background-color #fff !important
+
+.c-w
+	color #fff !important
+
+.c-b
+	color rgba(0, 0, 0, .54) !important
+
+.bs-n
+	box-shadow none !important
+
+.bs-default
+	box-shadow 0px 2px 5px 0 rgba(0, 0, 0, 0.26)
+
+.mh-300
+	max-height 300px
+
+.fs-l
+	font-size 24px
+
+.bg-default
+	background-color #eee
+
+.b-0
+	bottom 0
+
+.t-0
+	top 0
+
+.l-0
+	left 0
+
+.r-0
+	right 0
+
+.br-1100
+	border-radius 3px 3px 0 0
+
+.br-1111
+	border-radius 3px 3px 3px 3px
+
+.br-0001
+	border-radius 0 0 0 3px
+
+.br-0011
+	border-radius 0 0 3px 3px
+
+
+.d-b
+	display block
+
+.d-tc
+	display table-cell
+
+.c-p
+	cursor pointer
+
+.o-e
+	overflow ellipsis
+
+.o-v
+	overflow visible !important
+
+.ox-a
+	overflow-x auto
+
+.ox-s
+	overflow-x scroll
+
+.oy-h
+	overflow-y hidden
+
+.ox-h
+	overflow-x hidden
+
+.p-a
+	position absolute
+
+.p-r
+	position relative
+
+.t-16
+	top 16px !important
+
+.t-24
+	top 24px !important
+
+.z-20
+	z-index 20

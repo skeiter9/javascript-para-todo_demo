@@ -1,0 +1,19 @@
+{
+  "name": "injusticeapp-api",
+  "version": "0.0.1",
+  "dependencies": {
+    "compression": "^1.4.3",
+    "errorhandler": "^1.3.5",
+    "loopback": "^2.15.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-storage": "^1.3.1",
+    "loopback-connector-mongodb": "^1.8.0",
+    "loopback-datasource-juggler": "^2.23.0",
+    "nodemon": "^1.3.7",
+    "papercut": "0.0.6",
+    "serve-favicon": "^2.2.0"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.7.2"
+  }
+}

@@ -1,0 +1,4 @@
+webapp/node_modules/
+webapp/bower_components/
+api/node_modules/
+api/node_modules/.strong-pm

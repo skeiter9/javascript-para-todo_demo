@@ -1,0 +1,46 @@
+md-sidenav(
+	md-component-id = 'left'
+	ui-view = 'sidenavLeft'
+	class = 'md-whiteframe-z2 md-sidenav-left'
+	id = 'sidenav-left'
+)
+
+md-toolbar(
+	md-scroll-shrink=''
+	ui-view = 'appbar'
+	class= 'md-appbar'
+)
+
+md-content(
+	mdx-content-main=''
+	ui-view = 'content'
+	id = 'content-main'
+)
+
+md-sidenav(
+	md-component-id = 'right'
+	class = 'md-whiteframe-z2 md-sidenav-right'
+	id = 'sidenav-right'
+)
+
+	md-toolbar(md-scroll-shrink = '')
+		div.md-toolbar-tools
+			md-button(
+				ng-click = 'layout.sidenavClose("right")'
+				aria-label = 'close sidenav right'
+				class = 'md-fab md-toolbar-icon square--s bg-t bs-n'
+			)
+				md-icon(md-font-icon='mdi mdi-close')
+			
+			span(class = 'o-e md-toolbar-title') {{layout.data.sidenav.right.toolbar.title | uppercase | translate | uppercase}}
+			
+			span(flex = true)
+
+			md-button(ng-repeat = 'icon in layout.sidenav.right.toolbar.icons.right', ng-click = 'icon.click($event)', aria-label='settings', class='md-fab md-toolbar-icon')
+				md-icon(md-font-icon='mdi mdi-{{icon.icon}}')
+
+	md-content(ui-view = 'sidenavRight')
+	md-content(
+		mdx-sidenav-content=''
+		content = 'layout.data.sidenav.right.content'
+	)

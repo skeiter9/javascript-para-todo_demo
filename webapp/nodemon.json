@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "watch": [
+    "webpack.config.js",
+    "dist/*"
+  ],
+  "ext": ["js", "json", "html"],
+  "env": {
+    "NODE_ENV": "development"
+  }
+}

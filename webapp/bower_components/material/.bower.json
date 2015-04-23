@@ -1,0 +1,13 @@
+{
+  "name": "material",
+  "homepage": "https://github.com/angular/material",
+  "_release": "27ad2a5ceb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "27ad2a5ceb5d9c34a3491b95c41b8b97e0695cf2"
+  },
+  "_source": "git://github.com/angular/material.git",
+  "_target": "master",
+  "_originalSource": "angular/material"
+}

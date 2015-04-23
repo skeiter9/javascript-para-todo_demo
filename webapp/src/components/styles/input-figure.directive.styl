@@ -1,0 +1,33 @@
+.input-figure
+	position relative
+	[nv-file-drop] > div
+		height 100%
+		transition background-color .25s ease-in-out
+		&.over
+			background-color rgba(#000, .25)
+			border-bottom 3px solid rgb(68,138,255)
+		&.success
+			border-bottom 3px solid rgb(76,175,80)
+		&.error
+			background-color rgba(#000, .5)
+			border-bottom 3px solid rgb(244,67,54)
+
+.input-figure__action
+	bottom -34px
+	display flex
+	justify-content flex-end
+	padding-right 20px
+	position absolute
+	width 100%
+	input
+		overflow hidden
+		right 20px
+		top 0
+		position absolute
+		background red;
+		display block
+		width 56px
+		height 56px
+		border-radius 50%
+		z-index 20
+		opacity 0
